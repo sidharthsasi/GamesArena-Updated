@@ -1,7 +1,7 @@
 
 import email
 
-e
+
 from django.forms import PasswordInput
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
