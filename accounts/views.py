@@ -1,9 +1,7 @@
-from crypt import methods
+
 import email
-from genericpath import exists
-from itertools import accumulate
-from multiprocessing import context
-from unicodedata import name
+
+e
 from django.forms import PasswordInput
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm

@@ -1,6 +1,5 @@
 from cmath import e
 from multiprocessing import context
-from tkinter import E
 from tokenize import single_quoted
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
