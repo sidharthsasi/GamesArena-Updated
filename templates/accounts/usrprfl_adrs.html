@@ -1,0 +1,72 @@
+{% extends 'withoutftr.html' %}
+
+
+	{% block content %}
+	{% load static %}
+
+    <div class="content-wrapper">
+
+    <div class="row">
+        <div class="col-xl">
+          <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Address</h5>
+              
+            </div>
+			<form action="{% url 'userprfl' %}" method="POST">
+				{% csrf_token %}
+
+            <div class="card-body">
+               
+           <div class="mb-3">
+             <label class="form-label" for="basic-default-company">First Name</label>
+             <input type="text" class="form-control" name='fname' id="basic-default-company" placeholder="" />
+           </div>
+
+           <div class="mb-3">
+             <label class="form-label" for="basic-default-company">Last Name</label>
+             <input type="text" class="form-control" name='lname' id="basic-default-company" placeholder="" />
+           </div>
+
+           <div class="mb-3">
+            <label class="form-label" for="basic-default-company">Email</label>
+            <input type="email" class="form-control" name='email' id="basic-default-company" placeholder="" />
+          </div>
+				  
+             <div class="mb-3">
+               <label class="form-label" for="basic-default-company">Address Line 1</label>
+               <input type="text" class="form-control" name='addres_line_1' id="basic-default-company" placeholder="" />
+             </div>
+             <div class="mb-3">
+					<label class="form-label" for="basic-default-company">Address Line 2</label>
+					<input type="text" class="form-control" name='addres_line_2' id="basic-default-company" placeholder="" />
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label" for="basic-default-company">City</label>
+					<input type="text" class="form-control" name='city' id="basic-default-company" placeholder="" />
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label" for="basic-default-company">State</label>
+					<input type="text" class="form-control" name='state'id="basic-default-company" placeholder="" />
+				  </div>
+				  <div class="mb-3">
+					<label class="form-label" for="basic-default-company">Country</label>
+					<input type="text" class="form-control" name='country' id="basic-default-company" placeholder="" />
+				  </div>
+          <div class="mb-3">
+            <label class="form-label" for="basic-default-company">PIN</label>
+            <input type="text" class="form-control" name='pin' id="basic-default-company" placeholder="" />
+            </div>
+           
+				 
+                  <button type="submit" class="btn btn-primary">save</button>
+                </form>
+              </div>
+            </div>
+          </div>
+  
+  
+
+
+
+    {% endblock %}

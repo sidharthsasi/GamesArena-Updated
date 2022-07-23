@@ -1,0 +1,114 @@
+{% extends 'withoutftr.html' %}
+
+
+	{% block content %}
+	{% load static %}
+    
+
+<h1> Edit profile here</h1>
+
+
+<br>
+
+
+<div class="col-xxl">
+    <div class="card mb-4">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        
+        
+      </div>
+
+      <form action="/accounts/edituserprfl/" method="POST">
+        {% csrf_token %}
+        
+      <div class="card-body">
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">First Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="basic-default-name" name="fname" value="{{user.first_name}}" />
+          </div>
+        </div>
+
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Last Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="basic-default-name" name="lname" value="{{user.last_name}}" />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="col-sm-2 col-form-label" for="basic-default-name">Email</label>
+          <div class="col-sm-10">
+            <input type="email" class="form-control" id="basic-default-name" name="email" value="{{user.last_name}}" />
+          </div>
+        </div>
+
+        
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Adress Line 1</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="basic-default-name" name="address1" value="{{user.address_line_1}}" />
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Adress Line 2</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="basic-default-name" name="address2" value="{{user.address_line_2}}" />
+            </div>
+          </div>
+        
+          
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-company" >City</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="basic-default-company"
+                value="{{user.city}}"
+                name="city"
+              />
+            </div>
+          </div>
+
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">State</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="basic-default-name" name="state" value="{{user.State}}" />
+            </div>
+          </div>
+
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Country</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="basic-default-name" name="country" value="{{user.country}}" />
+            </div>
+          </div>
+        
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">PIN</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="basic-default-name" name="pin" value="{{user.country}}" />
+            </div>
+          </div>
+
+
+          <div class="row justify-content-end">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+      </div>
+     </form>
+    </div>
+  </div>
+
+
+  
+
+{% endblock %}

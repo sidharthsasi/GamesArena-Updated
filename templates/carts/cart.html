@@ -1,0 +1,227 @@
+{% extends 'temp.html' %}
+
+
+	{% block content %}
+	{% load static %}
+	{% load mathfilters %}
+
+
+	
+
+
+	
+
+	<!-- breadcrumb -->
+	<div  class="container">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="{% url 'home' %}" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<a href="{% url 'products' %}" class="stext-109 cl8 hov-cl1 trans-04">
+				Products
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
+
+			<span class="stext-109 cl4">
+				Shoping Cart
+			</span>
+		</div>
+	</div>
+		
+
+	<!-- Shoping Cart -->
+
+	{% if not cart_items  %}
+	<div class="d-flex p-3 px-5">
+	<div style="width:50%;"><img style="margin-left:auto; width:70%; display-flex  justify-content: center;" src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-2506.jpg?t=st=1658479875~exp=1658480475~hmac=f8209cba553512ff707afe261f7e849ced08221e32ba67fb2ee661f04b9f3342&w=1800" alt=""></div>
+	
+	<div class="one mt-5 mx-5 ">
+	  
+	<h2>Your Cart is empty</h2>
+	<br>
+	<div class="text-center">
+	   <a href="{% url 'home' %}" class="btn btn-primary pt-3 pb-3" style="border-radius:20px;">Continue Shopping</a>
+	</div>
+	</div>
+	</div>
+	
+	{% else%}
+
+	<div class="bg0 p-t-75 p-b-85">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
+					<div class="m-l-25 m-r--38 m-lr-0-xl">
+						<div class="wrap-table-shopping-cart" >
+							<table class="table-shopping-cart" >
+
+
+								<tr class="table_head">
+									<th class="column-1">Product</th>
+									<th class="column-2"></th>
+									<th class="column-3">Price</th>
+									<th class="column-4">Quantity</th>
+									<th class="column-5">Total</th>
+									{% comment %} <th class="column-6">Remove </th> {% endcomment %}
+								
+								</tr>
+							{% for cart_item in cart_items %}
+
+								<tr class="table_row">
+									<td class="column-1">
+										<div class="how-itemcart1">
+											<img src="{{ cart_item.product.images.url }}" alt="IMG">
+										</div>
+									</td>
+									<td class="column-2">{{cart_item.product.product_name}}</td>
+
+									{% if cart_item.product.offer_perc > 0 %}
+									<td class="column-3">₹ {{cart_item.product.offer_price }} </td>
+									{% else %}
+									<td class="column-3">₹ {{cart_item..product.price}}</td>
+									{% endif %}
+
+
+
+									<td class="column-4">
+										<div class="col">
+											<div class = "input-group input-spinner">
+												<div class = "input-group-prepend">
+												<a href="{% url 'remove_cart' cart_item.product.id %}" hx-target="#hey" hx-swap="innerHTML" class="btn btn-light" type="button" id="button-plus"><i class="fa fa-minus"></i></a>
+											
+												</div>
+												<input type="text" class="form-control" value="{{cart_item.quantity}}">
+												<div class = "input-group-append">
+												<a href="{% url 'add_cart' cart_item.product.id %}" hx-target="#hey" hx-swap="innerHTML" class="btn btn-light" type="button" id="button-minus"><i class="fa fa-plus"></i></a>
+
+												</div> 
+
+											</div>
+										</div>
+									</td>
+
+									{% if cart_item.product.offer_perc > 0 %}
+									<td class="column-5">₹ {{ cart_item.product.offer_price|mul:cart_item.quantity|floatformat:2}}</td>
+									{% else %}
+									<td class="column-5">₹ {{ cart_item.product.price|mul:cart_item.quantity|floatformat:2}}</td>
+									{% endif %}
+
+									<td class = "text-right">
+									<a href= "{% url 'remove_cart_item' cart_item.product.id %}"  hx-target="#hey" hx-swap="innerHTML" class="btn btn-danger mr-3" style="width:80%;" >Remove</a>
+									</td>
+								</tr>
+
+								 {% endfor %} 
+
+
+							</div>
+							
+							</table>
+						</div>
+
+						<div class="flex-w flex-sb-m bor15 p-t-18 p-b-15 p-lr-40 p-lr-15-sm">
+							<div class="flex-w flex-m m-r-20 m-tb-5">
+
+
+
+
+							   
+								<div class="card mb-3">
+								  <div class="card-body">
+									  <form method="POST" action="{% url 'review_cart' %}">
+										{% csrf_token %}
+										  <div class="form-group"> 
+											 
+										  </div>
+									  </form>
+								  </div>
+							  </div>
+
+
+
+
+
+
+
+
+							  
+							</div>
+						</div>
+					</div>
+				</div>
+
+				
+
+
+	<!-- End Shoping Cart -->
+
+
+
+
+				
+				
+
+				 {% for cart_item in cart_items %} 
+				<aside class ="col-lg-3">
+					<div class ="card">
+					<div class = "card-body">
+					  <dl class="dlist-align">
+						  <dt>Total Price :</dt>
+						  {% if cart_item.product.offer_perc > 0 %}
+						  <dd class = "text-right">{{ cart_item.product.offer_price|mul:cart_item.quantity|floatformat:2}}</dd>
+						  {% else %}
+						  <dd class = "text-right">{{ cart_item.product.price|mul:cart_item.quantity|floatformat:2}}</dd>
+						  {% endif %}
+						  <dd class = "text-right">{{ total}}</dd>
+
+
+					  </dl>
+					  
+					  <dl class="dlist-align">
+						<dt>Tax :</dt>
+						<dd class = "text-right">0</dd>
+					 </dl>
+					 <dl class="dlist-align">
+						<dt>Total :</dt>
+						{% if cart_item.product.offer_perc > 0 %}
+						  <dd class = "text-right">{{ cart_item.product.offer_price|mul:cart_item.quantity|floatformat:2}}</dd>
+						  {% else %}
+						  <dd class = "text-right">{{ cart_item.product.price|mul:cart_item.quantity|floatformat:2}}</dd>
+						  {% endif %}
+					</dl>
+					<hr>
+					<p class="text-center mb-3">
+						<img src="{% static 'images/checkout.png' %}" height="46">
+					</p>
+					<a href="{% url 'review_cart' %}" class="btn btn-primary btn-block">Checkout</a>
+					<a href="{% url 'products' %}" class="btn btn-primary btn-block">Continue Shopping</a>
+				</div>
+			</div>
+		</aside>
+			</div>
+		</div>
+	
+
+{% endfor %}
+
+		
+		{% endif %}
+
+
+
+
+
+
+
+
+
+
+		
+
+
+		{% endblock %}
+		
+
+	

@@ -1,0 +1,178 @@
+{% extends 'admins/tables-basic.html' %}
+
+
+{% block content %}
+{% load static %}
+
+<!-- CSS only -->
+<br>
+<div class="d-flex justify-content-center"><h2>Sales Report</h2></div>
+
+<form method="POST"  action = "{% url 'showresult'  %}">
+  {% csrf_token %}
+ From :&nbsp<input type='date' name="fromdate"/>&nbsp &nbsp &nbsp
+To :&nbsp<input type='date' name="todate"/>
+<input type="submit" value="Search"/> 
+
+<hr>
+<div class="d-flex justify-content-center">
+<a href="{% url 'fullreport' %}" class="btn btn-primary btn-block"> Full Report </a>
+</div>
+<br>
+<div class="d-flex justify-content-center">
+  
+
+  {% comment %} <div class="dropdown">
+    <button type="button" class="btn btn-primary" >
+      Weekly Report
+    </button>
+    <a href="{% url 'weeklyreport' 1 %}" class="btn btn-primary btn-block"> Weeeeeekly Report </a>
+    </div> {% endcomment %}
+
+
+
+
+  
+  <div class="dropdown mx-3 ">
+    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+
+    Monthly Report
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="{% url 'monthlyreport' 1 %}">January</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 2 %}">February</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 3 %}">March</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 4 %}">April</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 5 %}">May</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 6 %}">June</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 7 %}">July</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 8 %}">August</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 9 %}">September</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 10 %}">October</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 11 %}">November</a>
+      <a class="dropdown-item" href="{% url 'monthlyreport' 12 %}">December</a>
+
+      
+  </ul> 
+  </div> 
+
+ 
+  
+
+
+
+<div class="dropdown mx-3 ">
+  <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+  Yearly Report
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2022 %}">2022</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2021 %}">2021</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2020 %}">2020</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2019 %}">2019</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2018 %}">2018</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2017 %}">2017</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2016 %}">2016</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2015 %}">2015</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2014 %}">2014</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2013 %}">2013</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2012 %}">2012</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2011 %}">2011</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2010 %}">2010</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2009 %}">2009</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2008 %}">2008</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2007 %}">2007</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2006 %}">2006</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2005 %}">2005</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2004 %}">2004</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2003 %}">2003</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2002 %}">2002</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2001 %}">2001</a>
+    <a class="dropdown-item" href="{% url 'yearlyreport' 2000 %}">2000</a> 
+    <a class="dropdown-item" href="{% url 'yearlyreport' 1999 %}">1999</a> 
+    <a class="dropdown-item" href="{% url 'yearlyreport' 1998 %}">1998</a> 
+    <a class="dropdown-item" href="{% url 'yearlyreport' 1997 %}">1997</a> 
+      
+    
+  </ul>
+</div> 
+</div>
+
+<hr>
+
+
+  {% comment %} <div class="d-flex justify-content-end ">
+    <a href="{% url 'export_excel' %}" class="btn btn-primary mx-3">Export Excel</a>
+    <a href="{% url 'export_csv' %}"class="btn btn-secondary mx-3">Export CSV</a>
+    <a href="{% url 'export_pdf' %}"class="btn btn-dark mx-3 ">Export PDF</a>
+
+
+
+  </div>   
+<table class="table table-bordered mt-3">
+     <tr>
+        <th scope="col">Total </th>
+        <th scope="col">₹ &nbsp </th
+    </tr> {
+</table> {% endcomment %}
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Date</th>
+        <th scope="col">Order No </th>
+        <th scope="col">Total Amount</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+        {% for sales in salesreports %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ sales.day}}</td>
+
+        <td>{{ sales.count }}</td>
+        <td>{{ sales.sum }}</td>
+       
+
+      </tr>
+      {% endfor %}
+     
+    </tbody>
+  </table>
+
+</form>
+
+      {% comment %} {% if salesreports.has_previous %}
+      <a href="{% url 'fullreport' %}?page={{salesreports.previous_page_number}}">Previous Page</a>
+      {% endif %}
+
+      {% if salesreports.has_next %}
+      <a href="{% url 'fullreport' %}?page={{salesreports.next_page_number}} ">Next Page</a>
+      {% endif %} {% endcomment %}
+  <div class="d-flex justify-content-center">
+  <nav class="mt-4" aria-label="page navigation sample "></nav>
+  <ul class="pagination">
+  {% if salesreports.has_previous %}
+     <li class="page-item"> <a href="{% url 'fullreport' %}?page={{salesreports.previous_page_number}}">Previous</a></li>
+      {% endif %}
+      <br>
+
+      {% for i in salesreports.paginator.page_range %}
+      {% if salesreports.number == i %}
+        <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+      {% else %}
+        <li class="page-item "><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if ordr.has_next %}
+     <li class="page-item"><a href="{% url 'fullreport' %}?page={{salesreports.next_page_number}} ">Next</a></li>
+      {% endif %}
+  </ul>
+
+  </div>
+{% endblock %}
+
+

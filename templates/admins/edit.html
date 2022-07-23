@@ -1,0 +1,106 @@
+{% extends 'admins/tables-basic.html' %}
+
+
+{% block content %}
+{% load static %}
+
+
+<br>
+
+<div>
+    <a
+      href=""
+      target="_blank"
+      class="btn btn-danger btn-buy-now"
+      >Update</a>
+    
+  </div>
+<br>
+<div class="col-xxl">
+    <div class="card mb-4">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        
+        
+      </div>
+
+      <form action="/admins/edit/{{user.id}}" method="POST">
+        {% csrf_token %}
+
+      <div class="card-body">
+        <form>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">First Name</label>
+            <div class="col-sm-10">
+              <input type="text}" class="form-control" id="basic-default-name" name="firstname" value="{{user.first_name}}" />
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Last Name</label>
+            <div class="col-sm-10">
+              <input type="text}" class="form-control" id="basic-default-name" name="lastname" value="{{user.last_name}}" />
+            </div>
+          </div>
+        
+          
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-company" >Username</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="basic-default-company"
+                value="{{user.username}}"
+                name="username"
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-email"
+            >Email</label>
+            <div class="col-sm-10">
+              <div class="input-group input-group-merge">
+                <input
+                  type="text"
+                  id="basic-default-email"
+                  class="form-control"
+                  value="{{user.email}}"
+                  aria-label="john.doe"
+                  aria-describedby="basic-default-email2"
+                  name="email"
+                />
+                <span class="input-group-text" id="basic-default-email2">@example.com</span>
+              </div>
+             
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-phone"
+            value="{{user.phone_number}}">Phone No</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                id="basic-default-phone"
+                class="form-control phone-mask"
+                placeholder="658 799 8941"
+                aria-label="658 799 8941"
+                aria-describedby="basic-default-phone"
+                name="phoneno"
+              />
+            </div>
+          </div>
+          
+          
+          <div class="row justify-content-end">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+{% endblock %}

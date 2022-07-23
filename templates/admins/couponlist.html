@@ -1,0 +1,66 @@
+{% extends 'admins/tables-basic.html' %}
+
+
+{% block content %}
+{% load static %}
+
+<div class="d-flex justify-content-between">
+    
+    <div class=" m-3" >
+   
+    <td><a href="{% url 'add_coupon' %}"><button type="submit"  class="btn btn-outline-success">Add Coupon</button></a></td>
+   
+  </div>
+  </div>
+  <div class="container">
+  <table class="table table-sm">
+    <thead>
+      <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Coupon name</th>
+          <th scope="col">Percentage (%)</th>
+          <th scope="col">valid from</th> 
+          <th scope="col">valid to</th> 
+          
+          <th scope="col">Edit coupon</th> 
+          <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for coupon in coupons %}
+        <tr>
+          <th scope="row">{{ forloop.counter }}</th>
+          <th scope="row">{{ coupon.coupon_code }}</th>
+          <td>{{ coupon.discount }}%</td>
+          <td>{{ coupon.valid_from }}</td> 
+          <td>{{ coupon.valid_to }}</td> 
+          <td>
+            <a  href="{% url 'edit_coupon' coupon.id %}">
+            <button type="button"  class="btn btn-warning mt-2">Edit Coupon</button>
+            </a>
+          </td> 
+          <td>
+              {% if coupon.active == True %}
+              <a  href="{% url 'disable_coupon' coupon.id %}">
+              <button type="button"  class="btn btn-primary mt-2">Disable</button>
+              </a>
+              {% else %}
+              <a  href="{% url 'disable_coupon' coupon.id %}">
+                  <button type="button"  class="btn btn-success mt-2">Enable</button>
+                  </a>
+                  {% endif %}
+            </td>
+          
+         
+        </tr>
+        {% endfor %%}
+    </tbody>
+  </table>
+  </div>
+
+
+
+
+
+
+{% endblock %}

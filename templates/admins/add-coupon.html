@@ -1,0 +1,69 @@
+{% extends 'admins/tables-basic.html' %}
+
+
+{% block content %}
+{% load static %}
+
+<br>
+<a href="{% url 'couponlist' %}" style="width:150px;"> <button type="button" class="btn btn-primary btn-block mb-4" style="width:100%;" >Back</button></a>
+<div class="d-flex justify-content-center">
+<div class="card bg-secondary text-white mb-4 mb-xl-0" style="width:60%;">
+   
+    <div class="card-body">
+
+
+<div class="container row" style="margin-top:100px;">
+  <div class="d-flex justify-content-end">
+   
+     </div>
+<form method='POST' action= "{% url 'add_coupon' %}">
+    {% csrf_token %}
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <div class="row d-flex justify-content-center">
+     
+
+    <!-- Email input -->
+    
+    <div class="form-outline mb-4 " style="width:60%;">
+      <label class="form-label text-dark" for="form3Example3" >Coupon code</label>
+
+      <input type="text" id="form3Example3" class="form-control" name="coupon_code"  />
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4" style="width:60%;">
+      <label class="form-label text-dark" for="form3Example4" >offer in percentage (%)</label>
+
+      <input type="number" min="0" id="form3Example4" class="form-control" name="discount"  />
+    </div>
+
+    <div class="form-outline mb-4" style="width:60%;">
+      <label class="form-label text-dark" for="form3Example4"> Valid from </label>
+
+      <input type="datetime-local" id="form3Example4" class="form-control" name="valid_from"  />
+    </div>
+
+
+    <div class="form-outline mb-4" style="width:60%;">
+      <label class="form-label text-dark" for="form3Example4" > Valid To </label>
+
+      <input type="datetime-local" id="form3Example4" class="form-control" name="valid_to"  />
+    </div>
+
+
+
+
+</div>
+<div class="d-flex justify-content-center" >
+    <!-- Submit button -->
+    <button  type="submit" class="btn btn-info btn-block mb-4 " >save</button>
+
+</div>
+</form>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

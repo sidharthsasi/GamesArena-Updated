@@ -1,0 +1,52 @@
+{% extends 'admins/tables-basic.html' %}
+
+
+{% block content %}
+{% load static %}
+
+
+<br>
+
+
+
+
+
+              <div class="row mb-5">
+                <div class="col-md-6 col-xl-4">
+                  <div class="card mb-3 ">
+                    <img class="card-img-top" src="{% static 'images/cat offer.jpeg' %} " alt="Card image cap" />
+                    <div class="card-body">
+                      <h5 class="card-title">Product Offer</h5>
+                      <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This
+                        content is a little bit longer.
+                      </p>
+                      <a href="{% url 'productoffer' %}"><button  class="btn btn-primary" >Manage Offers</button></a>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-6 col-xl-4 ">
+                  <div class="card mb-3 ">
+                    <div class="card-body ">
+                      <h5 class="card-title">Category Offer</h5>
+                      <p class="card-text">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This
+                        content is a little bit longer.
+                      </p>
+                      <a href="{% url 'category_offr' %}"><button  class="btn btn-primary" >Manage Offers</button></a>
+                    </div>
+                    <img class="card-img-bottom" src="{% static '/images/special-offer.jpeg'   %}" alt="Card image cap" />
+                  </div>
+                </div>
+            </div>
+         
+
+
+
+
+
+
+{% endblock %}

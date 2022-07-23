@@ -1,0 +1,84 @@
+
+{% extends 'withoutftr.html' %}
+{% block content %}
+{% load static %}
+
+
+	
+	
+	
+	
+	<!-- ========================= SECTION CONTENT ========================= -->
+	<section class="section-conten padding-y bg">
+	
+	<div class="container">
+		<div class="row">
+		{% include 'sidebar.html' %}
+		<main class="col-md-9">
+			<article class="card">
+			<header class="card-header">
+				<strong class="d-inline-block mr-3">Your order history</strong>
+				
+			</header>
+			<div class="card-body">
+				<div class="row"> 		
+				<div class="col-md-12">
+					<table class="table table-hover">
+						<thead>
+						  <tr>
+							<th scope="col">Order </th>
+							<th scope="col">Billing Name</th>
+							<th scope="col">Order Total</th>
+							<th scope="col">Date</th>
+							<th scope="col">Status</th>
+							
+						  </tr>
+						</thead>
+						<tbody>
+						
+							{%  for order in ordr %}
+						
+						  <tr>
+							<th scope="row">{{order.order_number}}</th>
+							<td>{{order.full_name}}</td>
+						
+							
+							<td>{{order.order_total}}</td>
+							<td>{{order.created_at }}</td>
+
+							{% if order.status == "Cancelled" %}
+							<td><a href="#"><button class="btn btn-danger disabled">Cancelled</button></a>
+								
+								{% elif order.status == "Completed"%}
+							<td><a href="{% url 'returnordr' order.id %}"><button class="btn btn-primary" onclick="return confirm('Do you want to Return this order.order_number')">Return</button></a>
+								{% elif order.status == "Confirmed"%}
+							<td><a href="{% url 'canclordr' order.id %}"><button class="btn btn-warning" onclick="return confirm('Do you want to cancell this order.order_number')">Cancel</button></a>
+								{% elif order.status == "Returned"%}
+							<td><a href="#"><button class="btn btn-info disabled">Returned</button></a>
+
+								{% endif %}
+								
+
+								
+
+
+
+
+						  </tr>
+						
+						 {% endfor %}
+						</tbody>
+					  </table>
+				</div>		
+				</div> 
+			</div> 
+			
+			</article> <!-- order-group.// --> 
+		</main>
+	</div> <!-- row.// -->
+	</div>
+	
+	
+	</section>
+
+	{% endblock %}

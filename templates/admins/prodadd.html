@@ -1,0 +1,219 @@
+{% extends 'admins/tables-basic.html' %}
+
+
+{% block content %}
+{% load static %}
+<br>
+<div class="col-xxl">
+    <div class="card mb-4">
+      <div class="card-header d-flex align-items-center justify-content-between">
+        <h5 class="mb-0">Add Product</h5>
+        
+      </div>
+      <div class="card-body">
+        <form action="{% url 'prodadd' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name='prodname' id="basic-default-name" placeholder="" />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">Description</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name='proddes' id="basic-default-name" placeholder="" />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">PRICE</label>
+            <div class="col-sm-10">
+              <input type="number" min="0" class="form-control" name='prodprice' id="basic-default-name" placeholder="" />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="basic-default-name">STOCK</label>
+            <div class="col-sm-10">
+              <input type="number" min="0" class="form-control" name='prodstock' id="basic-default-name" placeholder="" />
+            </div>
+          </div>
+          <div class="row mb-3">
+
+            <label class="col-sm-2 col-form-label" for="basic-default-name">CATEGORY</label>
+            <div class="col-sm-10">
+              <select name="prodcat"  id="" class="name">
+              <option value="" selected >------------</option>
+              {% for cat in cate %}
+              <option value="{{cat.id }}">{{cat.category_name}}</option>
+              {% endfor %}
+            </select>
+
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="images">IMAGES</label>
+            <div class="col-sm-10">
+              <input type="file"  name="images" accept="image/png, image/gif, image/jpeg image/jpg image/webp"  id="imageInp" class="form-control" />
+
+              <div class="image-preview" id="imagePreview">
+                <img src="" alt="Image Preview" class="image-preview__image">
+                <span class="image-preview__default-text"> Image Preview </span>
+              </div>
+
+          </div>
+        </div>
+
+
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="images">IMAGES</label>
+            <div class="col-sm-10">
+              <input type="file"  name="images2"   accept="image/png, image/gif, image/jpeg image/jpg image/webp" id="imageInp2" class="form-control" />
+              
+
+              <div class="image-preview" id="imagePreview2">
+                <img src="" alt="Image Preview" class="image-preview__image">
+                <span class="image-preview2__default-text"> Image Preview </span>
+              </div>
+             
+            </div>
+          </div>
+
+
+
+          <div class="row mb-3">
+            <label class="col-sm-2 col-form-label" for="images">IMAGES</label>
+            <div class="col-sm-10">
+              <input type="file"  name="images3"  accept="image/png, image/gif, image/jpeg image/jpg image/webp" id="imageInp3" class="form-control" />
+
+              <div class="image-preview" id="imagePreview3">
+                <img src="" alt="Image Preview" class="image-preview__image">
+                <span class="image-preview3__default-text"> Image Preview </span>
+              </div>
+
+
+            </div>
+          </div>
+
+      <!-- Image preview -->
+
+           
+           
+
+      <!-- Image preview end -->
+
+
+          <div class="row justify-content-end">
+            <div class="col-sm-10">
+             <button type="submit"  class="btn btn-primary">ADD</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+   <!-- Image preview script -->
+
+   
+<script>
+  const imageInp =document.getElementById("imageInp");
+  const previewContainer = document.getElementById("imagePreview");
+  const previewImage  = previewContainer.querySelector(".image-preview__image");
+  const previewDefaulttext  = previewContainer.querySelector(".image-preview__default-text");
+
+  imageInp.addEventListener("change", function(){
+      const file = this.files[0];
+      
+      if (file){
+          const reader  = new FileReader();
+
+          previewDefaulttext.style.display = "none";
+          previewImage.style.display      = "block";
+
+          reader.addEventListener("load", function(){
+              console.log(this);
+              previewImage.setAttribute("src", this.result);
+          });
+
+          reader.readAsDataURL(file);
+      }   else{
+          previewDefaulttext.style.display = "null";
+          previewImage.style.display      = "null";
+      }
+  });
+
+</script>
+
+
+<script>
+  const imageInp2 =document.getElementById("imageInp2");
+  const previewContainer2 = document.getElementById("imagePreview2");
+  const previewImage2  = previewContainer2.querySelector(".image-preview__image");
+  const previewDefaulttext2  = previewContainer2.querySelector(".image-preview2__default-text");
+
+  imageInp2.addEventListener("change", function(){
+      const file = this.files[0];
+      
+      if (file){
+          const reader  = new FileReader();
+
+          previewDefaulttext2.style.display = "none";
+          previewImage2.style.display      = "block";
+
+          reader.addEventListener("load", function(){
+              console.log(this)
+              previewImage2.setAttribute("src", this.result);
+          });
+
+          reader.readAsDataURL(file);
+      }   else{
+          previewDefaulttext2.style.display = "null";
+          previewImage2.style.display      = "null";
+      }
+  });
+
+</script>
+
+<script>
+  const imageInp3 =document.getElementById("imageInp3");
+  const previewContainer3 = document.getElementById("imagePreview3");
+  const previewImage3  = previewContainer3.querySelector(".image-preview__image");
+  const previewDefaulttext3  = previewContainer3.querySelector(".image-preview3__default-text");
+
+  imageInp3.addEventListener("change", function(){
+      const file = this.files[0]
+      
+      if (file){
+          const reader  = new FileReader();
+
+          previewDefaulttext3.style.display = "none";
+          previewImage3.style.display      = "block";
+
+          reader.addEventListener("load", function(){
+              console.log(this)
+              previewImage3.setAttribute("src", this.result);
+          });
+
+          reader.readAsDataURL(file);
+      }   else{
+          previewDefaulttext3.style.display = "null";
+          previewImage3.style.display      = "null";
+      }
+  });
+
+</script>
+
+
+
+
+  <!-- Image preview script end -->
+
+
+
+  
+
+{% endblock %}

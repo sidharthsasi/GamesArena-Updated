@@ -1,0 +1,94 @@
+{% extends 'admins/tables-basic.html' %}
+
+
+{% block content %}
+{% load static %}
+
+
+
+<div class="d-flex justify-content-center"><h2>Full Report</h2></div>
+
+
+
+
+  {% comment %} <div class="d-flex justify-content-end ">
+    <a href="{% url 'export_excel' %}" class="btn btn-primary mx-3">Export Excel</a>
+    <a href="{% url 'export_csv' %}"class="btn btn-secondary mx-3">Export CSV</a>
+    <a href="{% url 'export_pdf' %}"class="btn btn-dark mx-3 ">Export PDF</a>
+
+
+
+  </div>   
+<table class="table table-bordered mt-3">
+     <tr>
+        <th scope="col">Total </th>
+        <th scope="col">₹ &nbsp </th
+    </tr> {
+</table> {% endcomment %}
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">No.</th>
+        <th scope="col">Date</th>
+        <th scope="col">Order No </th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Status</th>
+
+
+       
+      </tr>
+    </thead>
+    <tbody>
+      
+        {% for sales in salesreports %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ sales.created_at }}</td>
+
+        <td>{{ sales.order_number }}</td>
+        <td>{{ sales.order_total }}</td>
+        <td>{{ sales.status }}</td>
+
+      </tr>
+      
+      {% endfor %}
+     
+     
+    </tbody>
+  </table>
+{% comment %} {% if salesreports.has_previous %}
+<a href="{% url 'fullreport' %}?page={{salesreports.previous_page_number}}">Previous Page</a>
+{% endif %}
+
+{% if salesreports.has_next %}
+<a href="{% url 'fullreport' %}?page={{salesreports.next_page_number}} ">Next Page</a>
+{% endif %}
+  {% endcomment %}
+
+
+
+<div class="d-flex justify-content-center">
+  <nav class="mt-4" aria-label="page navigation sample "></nav>
+  <ul class="pagination">
+  {% if salesreports.has_previous %}
+     <li class="page-item"> <a href="{% url 'fullreport' %}?page={{salesreports.previous_page_number}}">Previous</a></li>
+      {% endif %}
+      <br>
+
+      {% for i in salesreports.paginator.page_range %}
+      {% if salesreports.number == i %}
+        <li class="page-item active"><a class="page-link" href="#">{{i}}</a></li>
+      {% else %}
+        <li class="page-item "><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if ordr.has_next %}
+     <li class="page-item"><a href="{% url 'fullreport' %}?page={{salesreports.next_page_number}} ">Next</a></li>
+      {% endif %}
+  </ul>
+
+  </div>
+
+{% endblock %}
+
+

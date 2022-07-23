@@ -1,0 +1,59 @@
+
+          {% extends 'withoutftr.html' %}
+          {% block content %}
+          {% load static %}
+          
+          
+          
+          
+          <section class="section-conten padding-y bg">
+              
+              <div class="container">
+                  <div class="row">
+                  {% include 'sidebar.html' %}
+                  <main class="col-md-9">
+                      <article class="card">
+                      <header class="card-header">
+                          <strong class="d-inline-block mr-3">Refferal Code</strong>
+                          
+                      </header>
+                      <div class="card-body">
+                          <div class="row"> 		
+                          <div class="col-md-12">
+                              <table class="table table-hover">
+                                  <thead>
+                                    
+                                  </thead>
+                                  <tbody>
+                                 
+           <center> <div class="card mb-3">
+            
+            <div class="card-body " >
+             <center>  <h5 class="card-title centered ">Your Refferal code</h5></center>
+            
+             <center>  <p class="card-text mb-4 " style="color: black;">{{usr.referral_code}} </p></center>
+            
+              <p class="card-text"><small class="text-muted">Share & Invite Earn</small></p>
+            </div>
+          </div> </center>
+          
+                                </table>
+                          </div>		
+                          </div> 
+                      </div> 
+                      
+                      </article> <!-- order-group.// --> 
+                  </main>
+              </div> <!-- row.// -->
+              </div>
+              
+              
+              </section>
+          
+          
+          
+          
+          
+          
+          
+          {% endblock %}

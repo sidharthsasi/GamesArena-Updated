@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .body{
+            background-color: coral;
+        }
+        .cascading-right {
+          margin-right: -50px;
+        }
+    
+        @media (max-width: 991.98px) {
+          .cascading-right {
+            margin-right: 0;
+          }
+        }
+      </style>
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+  {% for message in messages %}
+  {{ message }}
+  {% endfor %}
+
+<form action="/accounts/register/" method ="POST">
+          {% csrf_token %}
+
+    <!-- Section: Design Block -->
+<section class="text-center text-lg-start">
+   
+   
+    <!-- Jumbotron -->
+    <div class="container py-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card cascading-right" style="
+              background: hsla(0, 0%, 100%, 0.55);
+              backdrop-filter: blur(30px);
+              ">
+            <div class="card-body p-5 shadow-5 text-center">
+              <h2 class="fw-bold mb-5">Sign up now</h2>
+             
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="fname" name="fname" class="form-control" />
+                      <label class="form-label" for="fname">First name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="lname" name="lname" class="form-control" />
+                      <label class="form-label" for="lname">Last name</label>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-outline mb-4">
+                  <input type="text" id="username" name="username" class="form-control" />
+                  <label class="form-label" for="username">User Name</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="number" id="username" name="phone" class="form-control" />
+                  <label class="form-label" for="username">Phone Number</label>
+                </div>
+
+
+
+
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="email" name="email" class="form-control" />
+                  <label class="form-label" for="email">Email address</label>
+                </div>
+  
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <input type="password" id="pass1" name="pass1" class="form-control" />
+                  <label class="form-label" for="pass1">Password</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input type="password" id="pass2" name="pass2" class="form-control" />
+                  <label class="form-label" for="pass2">Confirm your password</label>
+                </div>
+  
+            
+                
+  
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">
+                  Sign up
+                </button>
+  
+                <!-- Register buttons -->
+                <div class="text-center">
+                  {% comment %} <p>or sign up with:</p> {% endcomment %}
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
+  
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                  </button>
+  
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+  
+                  <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                  </button>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <img src="{% static 'images/Messi.jpeg' %}" class="w-100 rounded-4 shadow-4"
+            alt="" />
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+</form>
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+</body>
+</html>
