@@ -223,7 +223,7 @@ def place_order(request):
             # order id of newly created order.
         
             razorpay_order_id = razorpay_order['id']
-            callback_url = 'http://127.0.0.1:8000/orders/razor_success/'  
+            callback_url = 'https://sidharthsasi.com/orders/razor_success/'  
             print("hiiisisfof")
             print(final_price)  
 
@@ -331,7 +331,7 @@ def confirm_order(request):
             # order id of newly created order.
         
             razorpay_order_id = razorpay_order['id']
-            callback_url = 'http://127.0.0.1:8000/orders/razor_success/'  
+            callback_url = 'https://sidharthsasi.com/orders/razor_success/'  
 
 
             context = {
@@ -569,7 +569,7 @@ def ordr_payment(request,check):
             request,
             "orders/razorpymnt.html",
             {
-                "callback_url": "http://" + "127.0.0.1:8000" + "/orders/razorpay/callback/",
+                "callback_url": "https://" + "sidharthsasi.com" + "/orders/razorpay/callback/",
                 "razorpay_key": settings.RAZOR_KEY_ID,
                 "order": payment,
             },
