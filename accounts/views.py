@@ -1,7 +1,5 @@
 
 import email
-
-
 from django.forms import PasswordInput
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -45,6 +43,7 @@ def register(request):
                                           last_name=lname,phone_number=phone)
         
         myuser.save()
+       
 
         user_name = myuser
         context = { 

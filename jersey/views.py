@@ -58,22 +58,7 @@ def product(request,category_slug=None):
     
 
                 
-    # banners = banner.objects.filter(is_selected =True).order_by('id')
-    # user = request.user
-    # if user.is_active == True:
-    #     cart_count = CartItem.objects.filter(user=request.user,is_active=True).count()
-    # else:
-    #     cart_count = 0
 
-    # context = {
-
-        
-        
-    #     'products': products,
-    #     'banners':banners,
-    #     'cart_count':cart_count,
-
-    # }
 
     if category_slug != None: 
         categories = get_object_or_404(Category,slug =category_slug)
