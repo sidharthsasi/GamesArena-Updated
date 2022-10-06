@@ -15,7 +15,7 @@ from pathlib import Path
 from pickle import APPEND, FALSE
 from re import template
 import os
-
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,18 +24,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
-RAZOR_KEY_SECRET = 'XIpG0XY7EbY0lRzi7rDfxcWJ'
-RAZOR_KEY_ID='rzp_test_3z9BAvPa0hWhOT'
+RAZOR_KEY_SECRET = config('RAZOR_KEY_SECRET')
+RAZOR_KEY_ID=config('RAZOR_KEY_ID')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7+rex6uve!ejqp80l8c1!=lmk5#8-zmss796yjb4$*+bs*ddi2'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG',cast=bool)
 
 ALLOWED_HOSTS = ['*']
 
